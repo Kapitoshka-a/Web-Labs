@@ -1,0 +1,70 @@
+.features {
+    padding: 100px 134px 142px 147px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+
+
+
+
+        img:first-child {
+            width: 45%;
+            height: auto;
+        }
+
+        h2 {
+            padding-top: 40px;
+            line-height: 142%;
+            color: #0B132A;
+            font-family: Mulish, sans-serif;
+            font-size: 36px;
+            font-weight: 500;
+            margin-bottom: 18px;
+
+        }
+
+        img:last-child {
+            width: 45%;
+            height: auto;
+        }
+
+        h3 {
+            padding-top: 25px;
+            color: #7D7987;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 300;
+            line-height: 165%;
+            margin-bottom: 20px;
+        }
+
+        button {
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 55px;
+            border: 1px solid #458FF6;
+            width: 200px;
+            height: 51px;
+            font-weight: 700;
+            color: #458FF6;
+            font-size: 18px;
+            background-color: #ffffff;
+            outline: none;
+
+            transition: all 0.3s ease-in-out;
+
+            &:hover {
+                box-shadow: 0 10px 100px rgb(4, 98, 250); /* Тінь при наведенні */
+            }
+
+        }
+
+
+
+}
+
+.feature-info {
+    max-width: 40%;
+    padding-left: 10px;
+}

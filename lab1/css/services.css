@@ -1,0 +1,53 @@
+.services {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 34px;
+    justify-items: center;
+    align-items: start;
+}
+
+.service {
+    background-color: white;
+    border-radius: 20px;
+    padding: 39px;
+    text-align: center;
+    height: 350px;
+    width: 350px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover{
+        transform: translateY(-5px);
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    }
+}
+
+.service img {
+    padding-top: 20px;
+    padding-left: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;  /* Прижимає вміст до лівого краю */
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+
+.service h3 {
+    text-align: left;
+    color: #000;
+    font-family: Mulish, sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 233%;
+}
+
+.service p {
+    text-align: left;
+    color: #7D7987;
+    font-family: Mulish, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 175%;
+}

@@ -1,0 +1,30 @@
+.header {
+    padding: 26px 80px 0 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    nav {
+        display: flex;
+        column-gap: 40px;
+
+        a {
+            text-decoration: none;
+            color: #4F5665;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+
+            &:hover {
+                color:  rgb(0, 0, 0);
+            }
+
+            span {
+                font-weight: 700;
+                color:#0B132A
+            }
+        }
+
+
+    }
+}
