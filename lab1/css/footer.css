@@ -32,3 +32,12 @@
 
     }
 }
+
+.dots_footer {
+    position: absolute;
+    left: -55px;
+    height: 100px;
+    background-image: url('../images/little_dots.svg');
+    background-size: cover;
+    z-index: 1;
+}

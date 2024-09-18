@@ -61,3 +61,13 @@
         }
 
 }
+
+.dots {
+    position: absolute;
+    top: 100px;
+    left: -10px;
+    width: 80px;
+    height: 113px;
+    background-image: url('../images/bubbles.svg');
+    background-size: cover;
+}

@@ -1,7 +1,9 @@
 .services {
+    padding: 0 50px 0 50px;
+    margin-top: 80px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 34px;
+    gap: 25px;
     justify-items: center;
     align-items: start;
 }
@@ -9,25 +11,27 @@
 .service {
     background-color: white;
     border-radius: 20px;
-    padding: 39px;
+    padding: 10px 39px 39px;
+    width: auto;
+    height: 300px;
     text-align: center;
-    height: 350px;
-    width: 350px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 100%; /* Щоб уникнути виходу за межі екрану на малих пристроях */
 
-    &:hover{
+    &:hover {
         transform: translateY(-5px);
         box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
     }
 }
 
 .service img {
+    height: 110px;
     padding-top: 20px;
     padding-left: 8px;
     display: flex;
     align-items: center;
-    justify-content: flex-start;  /* Прижимає вміст до лівого краю */
+    justify-content: flex-start;
     flex-direction: row;
     margin-bottom: 20px;
 }
@@ -37,17 +41,34 @@
     color: #000;
     font-family: Mulish, sans-serif;
     font-size: 24px;
-    font-style: normal;
     font-weight: 700;
     line-height: 233%;
 }
 
-.service p {
-    text-align: left;
-    color: #7D7987;
-    font-family: Mulish, sans-serif;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 300;
-    line-height: 175%;
+
+
+.learn-more {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.learn-more .button {
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 55px;
+    border: 1px solid #458FF6;
+    width: 200px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    font-weight: 700;
+    color: #458FF6;
+    font-size: 18px;
+    background-color: #ffffff;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.learn-more .button:hover {
+    box-shadow: 0 10px 100px rgb(4, 98, 250);
 }
