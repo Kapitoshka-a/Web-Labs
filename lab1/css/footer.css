@@ -31,7 +31,21 @@
 
 
     }
+    @media (max-width: 960px) {
+
+        nav {
+            display: none;
+        }
+    }
+
+    @media (max-width: 580px) {
+        padding: 46px 0;
+        display: flex;
+        justify-content: center;
+    }
 }
+
+
 
 .dots_footer {
     position: absolute;

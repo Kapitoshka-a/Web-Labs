@@ -14,26 +14,44 @@
     
     <header class="header">
         <img src="images/logo.svg" alt="logo"/>
-        <nav id="nav">
+        <nav class="desktop-nav">
             <a href="/"> <span>Home</span></a>
             <a href="/"> Find a doctor </a>
             <a href="/"> Apps </a>
             <a href="/"> Testimonials </a>
             <a href="/"> About us </a>
         </nav>
+        <nav class="burger-nav" role="navigation">
+            <div id="menuToggle">
+                <input type="checkbox" id="burger-checkbox" />
+                <span></span>
+                <span></span>
+                <span></span>
+                <div id="popup-menu">
+                    <ul id="menu">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="#">Find a doctor</a></li>
+                        <li><a href="#">Apps</a></li>
+                        <li><a href="#">Testimonials</a></li>
+                        <li><a href="#">About us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </header>
     <main>
-        <section class="hero">
+        <section class="heroSection">
             <div class="dots"></div>
-            <div>
+            <div class="qwerty">
                 <h2>Virtual healthcare for you</h2>
-                <h3>Trafalgar provides progressive, and affordable healthcare,
-                    accessible on mobile and online for everyone</h3>
-                <button> Consult today </button>
+                <h3>Trafalgar provides progressive, and affordable healthcare, accessible on mobile and online for everyone</h3>
+                <div>
+                    <a href="#" class="consult-button">Consult today</a>
+                </div>
             </div>
-            <img src="images/hero-section-photo.svg" alt=logo"/>
-
+            <img src="images/hero-section-photo.svg" alt="Hero section image"/>
         </section>
+
         <section class="features">
             <img src="images/section-2.svg" alt="photo">
             <div class="feature-info">
@@ -104,13 +122,23 @@
         <img class="dots_footer" src="images/little_dots.svg" alt="photo"/>
 
         <img src="images/logo-footer.svg" alt="logo"/>
-        <nav> 
+        <nav>
             <a href="/"> Company</a>
             <a href="/"> Region </a>
             <a href="/"> Help </a>
         </nav>
 
     </footer>
-    
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@latest/bundle.min.js"></script>
+    <script>
+        const lenis = new Lenis()
+
+        function raf(time) {
+            lenis.raf(time)
+            requestAnimationFrame(raf)
+        }
+
+        requestAnimationFrame(raf)
+    </script>
 </body>
 </html>

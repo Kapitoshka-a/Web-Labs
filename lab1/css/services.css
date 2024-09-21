@@ -1,6 +1,5 @@
 .services {
     padding: 0 50px 0 50px;
-    margin-top: 80px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 25px;
@@ -71,4 +70,74 @@
 
 .learn-more .button:hover {
     box-shadow: 0 10px 100px rgb(4, 98, 250);
+}
+
+@media (max-width: 1100px) {
+    .services {
+        grid-template-columns: repeat(2, 1fr); /* Дві колонки на планшетах */
+    }
+
+    .service {
+        height: 360px;
+    }
+}
+@media (max-width: 1293px) {
+    .learn-more {
+        padding-right: 0 0 0 0;
+    }
+}
+
+
+@media (max-width: 1024px) {
+    .services {
+        grid-template-columns: repeat(2, 1fr); /* Дві колонки на планшетах */
+    }
+
+    .service {
+        height: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .services {
+        grid-template-columns: 1fr; /* Одна колонка на мобільних */
+        padding: 0;
+    }
+
+    .service {
+        width: 90%; /* Ширина блоку на мобільних пристроях */
+        height: auto;
+        width: 300px; /* Зберігаємо фіксовану ширину */
+        height: auto; /* Автоматична висота */
+    }
+}
+
+
+@media (max-width: 425px) {
+    .services {
+        justify-content: center;
+        align-items: center;
+        grid-template-columns: 1fr; /* Одна колонка на мобільних */
+    }
+
+    .service {
+        width: 70%; /* Ширина блоку на мобільних пристроях */
+        height: auto;
+        width: 220px; /* Зберігаємо фіксовану ширину */
+        height: auto; /* Автоматична висота */
+    }
+
+    .service img {
+        width: 70px;
+        height: auto;
+    }
+
+    .service h3 {
+        font-size: 16px;
+    }
+
+    .service p {
+        font-size: 12px;
+    }
+
 }

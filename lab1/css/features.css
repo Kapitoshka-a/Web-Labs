@@ -68,3 +68,44 @@
     max-width: 40%;
     padding-left: 10px;
 }
+
+@media (max-width: 768px) {
+    .features {
+        padding: 100px 20px;
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 50px;
+        align-items: center;
+    }
+
+
+
+    .features img:first-child, .features img:last-child {
+        width: 90%;
+    }
+
+
+
+    .feature-info {
+        max-width: 100%;
+    }
+
+}
+
+
+@media screen and (max-width: 768px) {
+  .footer__navigation,
+  .footer__branding,
+  .footer__links ul {
+    flex-direction: column;
+  }
+
+  .footer__branding > * {
+    margin-bottom: 15px;
+  }
+
+  .footer__links li {
+    margin-right: 0;
+    margin-bottom: 24px;
+  }
+}

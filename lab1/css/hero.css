@@ -1,18 +1,21 @@
-.hero {
+.heroSection {
     padding-top: 50px;
     margin: auto;
     display: flex;
     gap: 90px;
-    justify-content: center; /* Вирівнювання по горизонталі */
-    align-items: center; /* Вирівнювання по вертикалі */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 
         img {
             width: 45%;
             height: auto;
+            max-width: 760px;
         }
-        div{
-            padding-top: 60px;
+
+        .qwerty{
+            padding-top: 40px;
         }
 
         h2 {
@@ -42,24 +45,48 @@
 
         }
 
-        button {
+        .learn-more a {
+            display: inline-block;
             cursor: pointer;
             border-radius: 55px;
             background: #458FF6;
             border: none;
             width: 200px;
-            height: 56px;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
             font-weight: 700;
             color: #ffffff;
             font-size: 18px;
+            text-decoration: none;
             transition: all 0.3s ease-in-out;
-
-            &:hover {
-                box-shadow: 0 10px 100px rgb(4, 98, 250); /* Тінь при наведенні */
-            }
-
         }
 
+        .learn-more a:hover {
+            box-shadow: 0px 10px 100px rgb(4, 98, 250);
+        }
+
+}
+
+.consult-button {
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 55px;
+    background: linear-gradient(90deg, #458FF6, #4A90E2);
+    border: none;
+    width: 200px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 18px;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.consult-button:hover {
+    box-shadow: 0px 10px 100px rgba(4, 98, 250, 0.5);
 }
 
 .dots {
@@ -70,4 +97,80 @@
     height: 113px;
     background-image: url('../images/bubbles.svg');
     background-size: cover;
+}
+
+
+
+@media (max-width: 1292px) {
+
+    .qwerty{
+        padding-left: 80px;
+
+    }
+
+    .heroSection img {
+        padding-right: 60px;
+    }
+
+
+
+/* br mobile */
+@media (max-width: 768px) {
+
+    .qwerty{
+        padding-left: 0px;
+        padding-top: 10px;
+
+    }
+
+    .heroSection img {
+        padding-right: 0px;
+    }
+
+
+    .heroSection {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .heroSection img {
+        width: 90%;
+    }
+
+    .heroSection h2 {
+        font-size: 36px;
+    }
+
+    .heroSection h3 {
+        font-size: 18px;
+    }
+}
+}
+
+
+@media (max-width: 425px) {
+
+
+    .heroSection {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .heroSection img {
+        width: 90%;
+    }
+
+    .heroSection h2 {
+        padding-left: 30px;
+        padding-right: 30px;
+        font-size: 26px;
+    }
+
+    .heroSection h3 {
+        padding-left: 20px;
+        padding-right: 20px;
+        font-size: 15px;
+    }
 }
