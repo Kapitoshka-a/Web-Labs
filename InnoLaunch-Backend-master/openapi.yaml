@@ -1,0 +1,417 @@
+openapi: 3.0.0
+info:
+  title: InnoLaunch API
+  description: This is documentation about backend functional to help you develop frontend part
+  version: 0.0.1
+
+servers:
+  - url: http://127.0.0.1:8000/api/v1/
+  
+paths:
+  /:
+    get:
+      summary: Retrieve a list of recommended establishments
+      responses:
+        '200':
+          description: A list of recommended establishments
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    description: The total number of recommended establishments
+                  next:
+                    type: string
+                    nullable: true
+                    description: The URL for the next page of results
+                  previous:
+                    type: string
+                    nullable: true
+                    description: The URL for the previous page of results
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/EstablishmentShortVersion'
+                      
+  /establishments/:
+    get:
+      summary: Retrieve a list of establishments
+      responses:
+        '200':
+          description: A list of all establishments
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    description: The total number of establishments
+                  next:
+                    type: string
+                    nullable: true
+                    description: The URL for the next page of results
+                  previous:
+
+                    type: string
+                    nullable: true
+                    description: The URL for the previous page of results
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/EstablishmentShortVersion'
+    
+  /establishments/{slug}/:
+    get:
+      summary: Retrieve an establishment by slug
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          description: The slug of the establishment to retrieve
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The requested establishment
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EstablishmentFullVersion'
+                
+  /establishments/{slug}/comments/:
+    get:
+      summary: Retrieve all comments for specific establishment
+      parameters:
+      - name: slug
+        in: path
+        required: true
+        description: The slug of the establishment that has comments
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A list of all comments for an establishment
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    description: The total number of comments
+                  next:
+                    type: string
+                    nullable: true
+                    description: The URL for the next page of results
+                  previous:
+
+                    type: string
+                    nullable: true
+                    description: The URL for the previous page of results
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Comment'
+    post:
+      summary: Create a new comment for a specific establishment
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          description: The slug of the establishment to add a comment to
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Comment'
+      responses:
+        '201':
+          description: The created comment
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  author:
+                    type: string
+                    description: The author of the comment
+                  rating:
+                    type: integer
+                    format: int32
+                    description: The rating of the comment
+                  content:
+                    type: string
+                    description: The content of the comment
+        '400':
+          description: Bad request if the comment data is invalid or incomplete
+        '404':
+          description: Not found if the establishment does not exist
+          
+  /establishments/{slug}/comments/{pk}/:
+    get:
+      summary: Retrieve details about a specific comment
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          description: The slug of the establishment containing the comment
+          schema:
+            type: string
+        - name: pk
+          in: path
+          required: true
+          description: The primary key of the comment to retrieve
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Details about the specified comment
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+        '404':
+          description: Not found if the comment or establishment does not exist
+  
+    put:
+      summary: Update a specific comment
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          description: The slug of the establishment containing the comment
+          schema:
+            type: string
+        - name: pk
+          in: path
+          required: true
+          description: The primary key of the comment to update
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Comment'
+      responses:
+        '201':
+          description: Updated comment details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+        '400':
+          description: Bad request if the comment data is invalid or incomplete
+        '404':
+          description: Not found if the comment or establishment does not exist
+  
+    delete:
+      summary: Delete a specific comment
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          description: The slug of the establishment containing the comment
+          schema:
+            type: string
+        - name: pk
+          in: path
+          required: true
+          description: The primary key of the comment to delete
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: No content if the comment is successfully deleted
+        '404':
+          description: Not found if the comment or establishment does not exist
+    
+components:
+  schemas:
+  
+    Address:
+      type: object
+      properties:
+        city:
+          type: string
+          description: The city of the address
+        street:
+          type: string
+          description: The street of the address
+        build_number:
+          type: string
+          description: The build number of the address
+      required:
+        - city
+        - street
+        - build_number
+        
+    PriceCategory:
+      type: object
+      properties:
+        price_range:
+          type: string
+          description: The price range of the establishment
+      required:
+        - price_range
+        
+    EstablishmentImage:
+      type: object
+      properties:
+        image:
+          type: string
+          format: uri
+          description: The URL of the establishment image
+      required:
+        - image
+        
+    Amenity:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the amenity
+        description:
+          type: string
+          description: The description of the amenity
+      required:
+        - name
+        
+    Service:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the service
+      required:
+        - name
+    
+    Comment:
+      type: object
+      properties:
+        author:
+          type: string
+          description: The author of the comment
+        rating:
+          type: number
+          format: float
+          description: The rating of the comment
+        content:
+          type: string
+          description: The content of the comment
+        created_at:
+          type: string
+          format: date-time
+          description: The creation date of the comment
+        updated_at:
+          type: string
+          format: date-time
+          description: The last update date of the comment
+      required:
+        - author
+        - rating
+        - content
+        - created_at
+        - updated_at
+    
+    EstablishmentFullVersion:
+      type: object
+      properties:
+        slug:
+          type: string
+          description: The slug of the establishment
+        name:
+          type: string
+          description: The name of the establishment
+        type:
+          type: string
+          description: The type of the establishment
+        short_description:
+          type: string
+          description: A short description of the establishment
+        address:
+          $ref: '#/components/schemas/Address'
+          description: The address of the establishment
+        price_category:
+          $ref: '#/components/schemas/PriceCategory'
+          description: The price category of the establishment
+        capacity:
+          type: integer
+          description: The capacity of the establishment
+        work_mobile_number:
+          type: string
+          description: The work mobile number of the establishment
+        is_recommended:
+          type: boolean
+          description: Whether the establishment is recommended or not
+        average_rating:
+          type: number
+          description: The average rating of the establishment
+        total_comments_number:
+          type: integer
+          description: The total number of comments for the establishment
+        url:
+          type: string
+          format: uri
+          description: The URL of the establishment
+        amenities:
+          type: array
+          items:
+            $ref: '#/components/schemas/Amenity'
+          description: The amenities of the establishment
+        services:
+          type: array
+          items:
+            $ref: '#/components/schemas/Service'
+          description: The services offered by the establishment
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/EstablishmentImage'
+          description: The images of the establishment
+        comments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Comment'
+          description: The comments for the establishment
+
+    EstablishmentShortVersion:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the establishment
+        type:
+          type: string
+          description: The type of the establishment
+        address:
+          $ref: '#/components/schemas/Address'
+          description: The address of the establishment
+        price_category:
+          $ref: '#/components/schemas/PriceCategory'
+          description: The price category of the establishment
+        work_mobile_number:
+          type: string
+          description: The work mobile number of the establishment
+        is_recommended:
+          type: boolean
+          description: Whether the establishment is recommended or not
+        average_rating:
+          type: number
+          description: The average rating of the establishment
+        url:
+          type: string
+          format: uri
+          description: The URL of the establishment detail
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/EstablishmentImage'
+          description: The images of the establishment

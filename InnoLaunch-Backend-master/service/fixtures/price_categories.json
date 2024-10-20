@@ -1,0 +1,37 @@
+[
+    {
+        "model": "establishments.pricecategory",
+        "pk": 150,
+        "fields": {
+            "price_range": "0 - 500"
+        }
+    },
+    {
+        "model": "establishments.pricecategory",
+        "pk": 151,
+        "fields": {
+            "price_range": "500 - 1000"
+        }
+    },
+    {
+        "model": "establishments.pricecategory",
+        "pk": 152,
+        "fields": {
+            "price_range": "1000 - 3000"
+        }
+    },
+    {
+        "model": "establishments.pricecategory",
+        "pk": 153,
+        "fields": {
+            "price_range": "3000 - 5000"
+        }
+    },
+    {
+        "model": "establishments.pricecategory",
+        "pk": 154,
+        "fields": {
+            "price_range": "5000 - 10000"
+        }
+    }
+]
