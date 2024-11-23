@@ -1,7 +1,7 @@
 from django.db.models import Avg, FloatField
 from django.db.models.functions import Round
 from rest_framework import status
-from rest_framework.exceptions import NotFound
+from rest_framework.exceptions import NotFound, ValidationError
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import generics
@@ -60,28 +60,41 @@ class EstablishmentDetail(APIView):
         return Response(serializer.data)
 
 
-class CommentListCreate(generics.ListCreateAPIView):
-    """Endpoint to get all comments or create own for a specific specialty"""
-    queryset = Comment.objects.all()
-    serializer_class = CommentSerializer
+class CommentListCreate(APIView):
+    """
+    Endpoint to get all comments or create a new one for a specific establishment.
+    """
 
-    def get_queryset(self):
-        """Query set for retrieving all comments for specialty"""
-        slug = self.kwargs.get('slug')
+    def get(self, request, slug):
+        """
+        Handle GET request to retrieve all comments for a specific establishment.
+        """
         try:
-            comments = Comment.objects.filter(establishment__slug=slug, is_active=True)
-            return comments
+            comments = Comment.objects.filter(establishment__slug=slug)
+            serializer = CommentSerializer(comments, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
         except Comment.DoesNotExist:
             raise NotFound("Comments for this establishment do not exist.")
 
-    def perform_create(self, serializer):
-        """Create e new comment"""
-        slug = self.kwargs.get('slug')
-        establishment = generics.get_object_or_404(Establishment, slug=slug)
-        if Comment.objects.filter(establishment=establishment, author=self.request.user).exists():
-            raise serializers.ValidationError({'Message': 'You have already added comment on this establishment'})
-        serializer.save(author=self.request.user, establishment=establishment)
+    def post(self, request, slug):
+        """
+        Handle POST request to create a new comment for a specific establishment.
+        """
+        establishment = Establishment.objects.filter(slug=slug).first()
+        if not establishment:
+            raise NotFound("Establishment not found.")
 
+        # Validate author in request data
+        author = request.data.get('author', None)
+        if not author:
+            raise ValidationError({'author': 'This field is required.'})
+
+        # Create a new comment for the establishment
+        serializer = CommentSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(author=author, establishment=establishment)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class CommentDetail(APIView):
     """Endpoint to get specific detail about a comment"""

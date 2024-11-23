@@ -1,0 +1,57 @@
+.footer{
+    margin-top: 200px;
+    background: linear-gradient(183deg, #67C3F3 -8.57%, #5A98F2 82.96%);
+    padding: 46px 87px 30px 87px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    nav {
+        display: flex;
+        column-gap: 177px;
+
+        a {
+            color: #FFF;
+            text-decoration: none;
+            font-family: Mulish, sans-serif;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 300%;
+
+            &:hover {
+                color:  rgb(0, 0, 0);
+            }
+
+            span {
+                font-weight: 700;
+                color:#0B132A
+            }
+        }
+
+
+    }
+    @media (max-width: 960px) {
+
+        nav {
+            display: none;
+        }
+    }
+
+    @media (max-width: 580px) {
+        padding: 46px 0;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+
+
+.dots_footer {
+    position: absolute;
+    left: -55px;
+    height: 100px;
+    background-image: url('../images/little_dots.svg');
+    background-size: cover;
+    z-index: 1;
+}

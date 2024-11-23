@@ -1,0 +1,180 @@
+.header {
+    padding: 26px 80px 0 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    nav.desktop-nav {
+        display: flex;
+        column-gap: 40px;
+
+        a {
+            text-decoration: none;
+            color: #4F5665;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+
+            &:hover {
+                color:  rgb(0, 0, 0);
+            }
+
+            span {
+                font-weight: 700;
+                color:#0B132A
+            }
+        }
+
+
+    }
+
+    nav.burger-nav {
+        display: none; /* Ховати бургер-меню за замовчуванням */
+    }
+
+    @media (max-width: 870px) {
+
+        padding: 30px 10px 0px 10px;
+
+        img {
+            max-width: 150px;
+            padding-left: 30px;
+        }
+
+
+        nav.desktop-nav {
+            display: none; /* Ховати звичайне меню */
+        }
+
+        nav.burger-nav {
+            display: block; /* Показати бургер-меню */
+        }
+    }
+}
+
+#popup-menu a {
+    text-decoration: none; /* Прибрати підкреслення */
+    color: #ffffff; /* Колір тексту */
+}
+
+#popup-menu a:hover {
+    color: #ffcc00; /* Колір тексту при наведенні */
+}
+
+
+#menuToggle {
+    display: block;
+    position: relative;
+    z-index: 1;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+#menuToggle input {
+    display: block;
+    width: 40px;
+    height: 32px;
+    position: absolute;
+    top: -7px;
+    left: -5px;
+    cursor: pointer;
+    opacity: 0; /* Сховати цей елемент */
+    z-index: 2; /* Помістити його над бургером */
+}
+
+#menuToggle span {
+    display: block;
+    width: 33px;
+    height: 4px;
+    margin-bottom: 5px;
+    background: #cdcdcd;
+    border-radius: 3px;
+    z-index: 1;
+    transform-origin: 4px 0px;
+    transition: transform 0.5s ease, background 0.5s ease, opacity 0.55s ease;
+}
+
+#menuToggle input:checked ~ span {
+    opacity: 1;
+    transform: rotate(45deg) translate(-2px, -1px);
+}
+
+#menuToggle input:checked ~ span:nth-last-child(3) {
+    opacity: 0; /* Сховати середній span */
+}
+
+#menuToggle input:checked ~ span:nth-last-child(2) {
+    transform: rotate(-45deg) translate(0, -1px);
+}
+
+#popup-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    border-color: #2889de;
+    background: linear-gradient(to right, rgb(255, 255, 255), #fffbfb);
+    padding: 50px;
+    list-style-type: none;
+    transform: translateX(-100%);
+    transition: transform 0.5s ease;
+    z-index: 10;
+    /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); */
+    border-radius: 0px 10px 10px 0px; /* Закруглені краї */
+}
+
+#popup-menu ul {
+    margin: 0;                      /* Прибрати відступи */
+    padding: 0;                     /* Прибрати відступи */
+}
+
+#menu li {
+    list-style-type: none;
+}
+
+#menu {
+    padding: 0;                     /* Прибрати відступи для списку */
+}
+
+#menu a {
+    font-family: Mulish, sans-serif;
+    font-style: normal;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 15px 0;                /* Відступи між пунктами меню */
+    font-size: 20px;                /* Розмір шрифту */
+    color: #757575;                 /* Колір тексту */
+    transition: color 0.3s ease;    /* Анімація для зміни кольору */
+}
+
+#menu li:hover {
+    color: #000000;                 /* Зміна кольору при наведенні */
+}
+
+/* Для показу попапу при активному чекбоксі */
+#menuToggle input:checked ~ #popup-menu {
+    transform: translateX(0);       /* Показати меню */
+}
+
+.desktop-nav {
+    display: flex;
+    column-gap: 40px;
+}
+
+.desktop-nav a {
+    text-decoration: none;
+    color: #4F5665;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.desktop-nav a:hover {
+    color: rgb(0, 0, 0);
+}
+
+@media (max-width: 870px) {
+    .desktop-nav {
+        display: none; /* Сховати десктопне меню на малих екранах */
+    }
+}

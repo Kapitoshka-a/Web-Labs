@@ -24,7 +24,3 @@ services:
      - POSTGRES_DB=InnoLaunch_postgres
      - POSTGRES_USER=Kuki
      - POSTGRES_PASSWORD=3bla002
-
-  redis:
-    image: redis:7.0.5-alpine
-    hostname: redis

@@ -65,17 +65,17 @@ paths:
     
   /establishments/{slug}/:
     get:
-      summary: Retrieve an establishment by slug
+      summary: Retrieve an establishment.html by slug
       parameters:
         - name: slug
           in: path
           required: true
-          description: The slug of the establishment to retrieve
+          description: The slug of the establishment.html to retrieve
           schema:
             type: string
       responses:
         '200':
-          description: The requested establishment
+          description: The requested establishment.html
           content:
             application/json:
               schema:
@@ -83,17 +83,17 @@ paths:
                 
   /establishments/{slug}/comments/:
     get:
-      summary: Retrieve all comments for specific establishment
+      summary: Retrieve all comments for specific establishment.html
       parameters:
       - name: slug
         in: path
         required: true
-        description: The slug of the establishment that has comments
+        description: The slug of the establishment.html that has comments
         schema:
           type: string
       responses:
         '200':
-          description: A list of all comments for an establishment
+          description: A list of all comments for an establishment.html
           content:
             application/json:
               schema:
@@ -116,12 +116,12 @@ paths:
                     items:
                       $ref: '#/components/schemas/Comment'
     post:
-      summary: Create a new comment for a specific establishment
+      summary: Create a new comment for a specific establishment.html
       parameters:
         - name: slug
           in: path
           required: true
-          description: The slug of the establishment to add a comment to
+          description: The slug of the establishment.html to add a comment to
           schema:
             type: string
       requestBody:
@@ -151,7 +151,7 @@ paths:
         '400':
           description: Bad request if the comment data is invalid or incomplete
         '404':
-          description: Not found if the establishment does not exist
+          description: Not found if the establishment.html does not exist
           
   /establishments/{slug}/comments/{pk}/:
     get:
@@ -160,7 +160,7 @@ paths:
         - name: slug
           in: path
           required: true
-          description: The slug of the establishment containing the comment
+          description: The slug of the establishment.html containing the comment
           schema:
             type: string
         - name: pk
@@ -177,7 +177,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Comment'
         '404':
-          description: Not found if the comment or establishment does not exist
+          description: Not found if the comment or establishment.html does not exist
   
     put:
       summary: Update a specific comment
@@ -185,7 +185,7 @@ paths:
         - name: slug
           in: path
           required: true
-          description: The slug of the establishment containing the comment
+          description: The slug of the establishment.html containing the comment
           schema:
             type: string
         - name: pk
@@ -210,7 +210,7 @@ paths:
         '400':
           description: Bad request if the comment data is invalid or incomplete
         '404':
-          description: Not found if the comment or establishment does not exist
+          description: Not found if the comment or establishment.html does not exist
   
     delete:
       summary: Delete a specific comment
@@ -218,7 +218,7 @@ paths:
         - name: slug
           in: path
           required: true
-          description: The slug of the establishment containing the comment
+          description: The slug of the establishment.html containing the comment
           schema:
             type: string
         - name: pk
@@ -231,7 +231,7 @@ paths:
         '204':
           description: No content if the comment is successfully deleted
         '404':
-          description: Not found if the comment or establishment does not exist
+          description: Not found if the comment or establishment.html does not exist
     
 components:
   schemas:
@@ -258,7 +258,7 @@ components:
       properties:
         price_range:
           type: string
-          description: The price range of the establishment
+          description: The price range of the establishment.html
       required:
         - price_range
         
@@ -268,7 +268,7 @@ components:
         image:
           type: string
           format: uri
-          description: The URL of the establishment image
+          description: The URL of the establishment.html image
       required:
         - image
         
@@ -326,92 +326,92 @@ components:
       properties:
         slug:
           type: string
-          description: The slug of the establishment
+          description: The slug of the establishment.html
         name:
           type: string
-          description: The name of the establishment
+          description: The name of the establishment.html
         type:
           type: string
-          description: The type of the establishment
+          description: The type of the establishment.html
         short_description:
           type: string
-          description: A short description of the establishment
+          description: A short description of the establishment.html
         address:
           $ref: '#/components/schemas/Address'
-          description: The address of the establishment
+          description: The address of the establishment.html
         price_category:
           $ref: '#/components/schemas/PriceCategory'
-          description: The price category of the establishment
+          description: The price category of the establishment.html
         capacity:
           type: integer
-          description: The capacity of the establishment
+          description: The capacity of the establishment.html
         work_mobile_number:
           type: string
-          description: The work mobile number of the establishment
+          description: The work mobile number of the establishment.html
         is_recommended:
           type: boolean
-          description: Whether the establishment is recommended or not
+          description: Whether the establishment.html is recommended or not
         average_rating:
           type: number
-          description: The average rating of the establishment
+          description: The average rating of the establishment.html
         total_comments_number:
           type: integer
-          description: The total number of comments for the establishment
+          description: The total number of comments for the establishment.html
         url:
           type: string
           format: uri
-          description: The URL of the establishment
+          description: The URL of the establishment.html
         amenities:
           type: array
           items:
             $ref: '#/components/schemas/Amenity'
-          description: The amenities of the establishment
+          description: The amenities of the establishment.html
         services:
           type: array
           items:
             $ref: '#/components/schemas/Service'
-          description: The services offered by the establishment
+          description: The services offered by the establishment.html
         images:
           type: array
           items:
             $ref: '#/components/schemas/EstablishmentImage'
-          description: The images of the establishment
+          description: The images of the establishment.html
         comments:
           type: array
           items:
             $ref: '#/components/schemas/Comment'
-          description: The comments for the establishment
+          description: The comments for the establishment.html
 
     EstablishmentShortVersion:
       type: object
       properties:
         name:
           type: string
-          description: The name of the establishment
+          description: The name of the establishment.html
         type:
           type: string
-          description: The type of the establishment
+          description: The type of the establishment.html
         address:
           $ref: '#/components/schemas/Address'
-          description: The address of the establishment
+          description: The address of the establishment.html
         price_category:
           $ref: '#/components/schemas/PriceCategory'
-          description: The price category of the establishment
+          description: The price category of the establishment.html
         work_mobile_number:
           type: string
-          description: The work mobile number of the establishment
+          description: The work mobile number of the establishment.html
         is_recommended:
           type: boolean
-          description: Whether the establishment is recommended or not
+          description: Whether the establishment.html is recommended or not
         average_rating:
           type: number
-          description: The average rating of the establishment
+          description: The average rating of the establishment.html
         url:
           type: string
           format: uri
-          description: The URL of the establishment detail
+          description: The URL of the establishment.html detail
         images:
           type: array
           items:
             $ref: '#/components/schemas/EstablishmentImage'
-          description: The images of the establishment
+          description: The images of the establishment.html

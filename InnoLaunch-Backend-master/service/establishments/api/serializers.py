@@ -48,7 +48,7 @@ class EstablishmentListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Establishment
         fields = ('name', 'type', 'work_mobile_number', 'url', 'address', 'price_category',
-                  'images', 'is_recommended',)
+                  'images', 'is_recommended', "slug")
 
 
 class EstablishmentDetailSerializer(serializers.ModelSerializer):
@@ -64,7 +64,7 @@ class EstablishmentDetailSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Establishment
-        exclude = ('slug', 'id')
+        exclude = ()
 
     @staticmethod
     def get_total_comments_number(obj):

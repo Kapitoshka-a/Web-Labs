@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Mulish", system-ui;
+}
+
+
+body {
+    height: fit-content;
+    background-color: #ffffff;
+}
+
+.learn-more {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.learn-more button {
+    cursor: pointer;
+    border-radius: 55px;
+    border: 1px solid #458FF6;
+    width: 200px;
+    height: 51px;
+    font-weight: 700;
+    color: #458FF6;
+    font-size: 18px;
+    background-color: #ffffff;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        box-shadow: 0 10px 100px rgb(4, 98, 250); /* Тінь при наведенні */
+    }
+}

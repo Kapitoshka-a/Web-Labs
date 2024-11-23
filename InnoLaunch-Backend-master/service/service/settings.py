@@ -27,6 +27,11 @@ SECRET_KEY = 'django-insecure-h7xpdcu3=@s9wou^m=z*5+7!73&4#13yz29ermte0y2*1oca1o
 DEBUG = True
 
 ALLOWED_HOSTS = []
+CORS_ALLOW_ALL_ORIGINS = True
+# or restrict to specific domains
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    ]
 
 
 # Application definition
@@ -53,7 +58,6 @@ MIDDLEWARE = [
     "django.middleware.cache.UpdateCacheMiddleware",
     "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
-    "django.middleware.cache.FetchFromCacheMiddleware",
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -148,7 +152,6 @@ CELERY_BROKEN_URL = 'redis://redis:6379/0'
 CACHE_MIDDLEWARE_ALIAS = 'default'
 CACHE_MIDDLEWARE_SECONDS = 60 * 60
 
-CORS_ALLOW_ALL_ORIGINS = True
 
 REST_FRAMEWORK = {
     'DEFAULT_THROTTLE_RATES': {
@@ -158,13 +161,13 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'establishments.api.pagination.StandardResultsSetPagination',
 }
 
-CACHES = {
-    "default": {
-        "BACKEND": "django.core.cache.backends.redis.RedisCache",
-        "LOCATION": 'redis://redis:6379/1',
-
-    }
-}
+# CACHES = {
+#     "default": {
+#         "BACKEND": "django.core.cache.backends.redis.RedisCache",
+#         "LOCATION": 'redis://redis:6379/1',
+#
+#     }
+# }
 
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=15),
