@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 export const Footer = styled.div`
     display: flex;
-    margin-top: 20px;
-    justify-content: space-between;
+    margin: 20px;
+    justify-content: space-around;
+    align-items: center;
 `
+

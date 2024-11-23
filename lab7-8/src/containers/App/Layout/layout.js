@@ -1,22 +1,32 @@
 import React from "react";
-import { StyledHeader, IconsWrapper } from "./layout_styles";
+import { StyledHeader, IconsWrapper} from "./layout_styles";
+import { CenteredButton } from "../../../components/button/catalog_button_style";
 import {
   TwitterOutlined,
-  SearchOutlined,
   ShoppingCartOutlined,
   InstagramOutlined,
   FacebookOutlined,
   AliwangwangOutlined,
+
 } from "@ant-design/icons";
+import { Link } from "react-router-dom";
 
 const Layout = () => (
   <StyledHeader title="House Haven">
-    <div>
+    <div style={{alignItems: "center"}}>
       <IconsWrapper>
         <AliwangwangOutlined />
       </IconsWrapper>
+      
+      <Link to="/" style={{textDecoration:"none", color: "black"}}>
       <p>House Haven</p>
+      </Link>
+      
+      
     </div>
+    <Link to="/catalog" style={{ textDecoration: 'none' }}> 
+        <CenteredButton size="large">Catalog</CenteredButton>
+      </Link>
     <div>
       <IconsWrapper>
         <TwitterOutlined />
@@ -28,7 +38,7 @@ const Layout = () => (
     </div>
     <div>
       <IconsWrapper>
-        <SearchOutlined />
+       
 
         <ShoppingCartOutlined />
       </IconsWrapper>

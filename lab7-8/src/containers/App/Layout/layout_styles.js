@@ -4,6 +4,7 @@ export const StyledHeader = styled.div`
     padding: 16px 20px 4px;
     display: flex;
     justify-content: space-around;
+    align-items: center;
    
     table-layout: fixed;
     border-spacing: 10px;
@@ -23,4 +24,13 @@ export const IconsWrapper = styled.div`
     > span {
         margin: 0 12px;
     }
+
+
+`
+
+export const Header = styled.div `
+
+    display: flex;
+    align-items: center;
+
 `

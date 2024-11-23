@@ -7,12 +7,10 @@ const Footer = () => {
       <Wrapper>
         <LogoWrapper>
           <AliwangwangOutlined />
-          <h1>Home Haven</h1>
+          <h1>AWS Homes</h1>
         </LogoWrapper>
         <p>
-          Discover your dream home <br />
-          with a perfect blend of comfort and style, offering a unique aesthetic expression <br />
-          in architecture, landscaping, and interior design.
+          You can buy here some home for your house <br />
         </p>
         <VerticalLine />
         <IconsWrapper>
@@ -22,7 +20,7 @@ const Footer = () => {
           <InstagramOutlined style={{ color: '#3A9F4' }} />
         </IconsWrapper>
         <VerticalLine />
-        <StyledText>© Home Haven all rights reserved</StyledText>
+        <StyledText>© Approved by me</StyledText>
       </Wrapper>
     );
   };

@@ -34,21 +34,27 @@ export const ImageWrapper = styled.div`
     padding: 70px 0px;
     
     img {
-    
+       
         max-width: 100%; /* Адаптивное изображение */
         
     }
 `;
 
-
 export const CardWrapper = styled.div`
     display: flex;
-    justify-content: space-around;
-    width: 100%;
-    margin-top: 20px;
-    box-sizing: border-box; /* Учитываем отступы при расчете размеров */
-    overflow: hidden; /* Убираем скролл */
+    justify-content: center;
+    width: 80%;
+    margin: auto;
+    box-sizing: border-box;
+    flex-wrap: wrap; /* Дозволяє переносити картки на новий ряд */
+
+    & > div {
+        width: 250px; /* Зафіксована ширина картки */
+        margin: 20px; /* Відступи між картками */
+    }
 `;
+
+
 
 
 
@@ -62,3 +68,25 @@ export const StyledButton = styled(Button)`
 
 
 
+const ScrollableContainer = styled.div`
+  display: flex;
+ 
+  overflow-x: auto; // Allow horizontal scrolling
+  scroll-behavior: smooth; // Smooth scrolling effect
+  width: 100%; // Full width
+`;
+
+const ArrowButton = styled(Button)`
+  position: absolute;
+  z-index: 1; // Ensure buttons are on top
+  top: 50%;
+  transform: translateY(-50%);
+`;
+
+const LeftArrow = styled(ArrowButton)`
+  left: 10px; // Position left
+`;
+
+const RightArrow = styled(ArrowButton)`
+  right: 10px; // Position right
+`;
